@@ -368,18 +368,3 @@ public:
         return animateKittiesBulk(animations);
     }
 };
-
-int main(){
-    Kittacaii kitty;
-
-    kitty.setKittyColor("#e1ff00"); // Set a custom color for the kitty
-    kitty.animateBetweenKittiesBulk({
-        {5, 10, {"staticKitty", "staticKittyHappy", "staticKittySad"}, {"#e1ff00", "#e1ff00", "#e1ff00"}, 400, 3},
-        {9, 100, {"staticKitty", "staticKittyHappy", "staticKittySad"}, {"#e1ff00", "#e1ff00", "#e1ff00"}, 400, 3},
-        {11, 10, {"staticKitty", "staticKittyHappy", "staticKittySad"}, {"#e1ff00", "#e1ff00", "#e1ff00"}, 400, 3},
-        {7, 38, {"staticKitty", "staticKittyHappy", "staticKittySad"}, {"#e1ff00", "#e1ff00", "#e1ff00"}, 400, 3},
-        {15, 187, {"staticKitty", "staticKittyHappy", "staticKittySad"}, {"#e1ff00", "#e1ff00", "#e1ff00"}, 400, 3},
-    });
-
-    return 0;
-}
