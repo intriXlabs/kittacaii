@@ -238,8 +238,7 @@ public:
         }
         // Add conditions for other kitty types if needed
     }
-
-private:
+public:
     struct animateKitties{
         int row;
         int col;
@@ -362,9 +361,5 @@ public:
         std::cout << "\033[?25h"; // Show cursor
 
         return 0;
-    }
-
-    int animateBetweenKittiesBulk(std::vector<animateKitties> animations) {
-        return animateKittiesBulk(animations);
     }
 };
