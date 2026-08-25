@@ -153,7 +153,7 @@ public:
 
 public:
 
-    void printKitty(int row,std::string kittyName = "staticKitty") {
+    void printKitty(int row, int col, std::string kittyName = "staticKitty") {
 
         std::string temporaryKitty[3];
         if(kittyName == "staticKitty" || kittyName == "normal"){
@@ -228,8 +228,8 @@ public:
             std::cout << "\033[38;2;" << (int)kittyColor.r << ";" << (int)kittyColor.g << ";" << (int)kittyColor.b << "m";
         }
 
-        std::cout << "\033[" << row << ";0H"; // Move cursor to the specified row
         for(int i = 0; i < 3; i++){
+            std::cout << "\033[" << (row + i) << ";" << col << "H"; // Move cursor to the specified row and column for each line of the kitty
             std::cout << temporaryKitty[i] << std::endl;
         }
 
@@ -239,20 +239,133 @@ public:
         // Add conditions for other kitty types if needed
     }
 
-    int animateBetwenKitties(int row, std::vector<std::string> kittyNames, std::vector<std::string> hexColors, int delay = 500, int repeatCount = 5) {
-        if(kittyNames.size() != hexColors.size() || row < 0 || delay < 0 || repeatCount < 1) {
+private:
+    struct animateKitties{
+        int row;
+        int col;
+        std::vector<std::string> kittyNames;
+        std::vector<std::string> hexColors;
+        int delay;
+        int repeatCount;
+    };
+
+    void renderKittyFrame(const animateKitties& animationData, size_t frameIndex) {
+        setKittyColor(animationData.hexColors[frameIndex]);
+        printKitty(animationData.row, animationData.col, animationData.kittyNames[frameIndex]);
+    }
+
+public:
+
+    int animateBetweenKitties(animateKitties animationData) {
+        if(animationData.kittyNames.size() != animationData.hexColors.size() || animationData.row < 0 || animationData.delay < 0 || animationData.repeatCount < 1) {
             std::cerr << "Error: The number of kitty names and colors must be the same." << std::endl;
             return -1;
         }
 
-        for(int i = 0; i < repeatCount; i++) {
-            for(size_t j = 0; j < kittyNames.size(); j++) {
-                setKittyColor(hexColors[j]);
-                printKitty(row, kittyNames[j]);
-                std::this_thread::sleep_for(std::chrono::milliseconds(delay));
+        // mouse hide
+        std::cout << "\033[?25l"; // Hide cursor
+
+        for(int i = 0; i < animationData.repeatCount; i++) {
+            for(size_t j = 0; j < animationData.kittyNames.size(); j++) {
+                renderKittyFrame(animationData, j);
+                std::this_thread::sleep_for(std::chrono::milliseconds(animationData.delay));
             }
         }
+
+        //mouse show
+        std::cout << "\033[?25h"; // Show cursor
+
         return 0;
+    }
+
+    int animateKittiesBulk(const std::vector<animateKitties>& animations) {
+        if(animations.empty()) {
+            std::cerr << "Error: No animations provided." << std::endl;
+            return -1;
+        }
+        for(const auto& animation : animations) {
+            if(animation.kittyNames.size() != animation.hexColors.size() || animation.row < 0 || animation.delay < 0 || animation.repeatCount < 1) {
+                std::cerr << "Error: The number of kitty names and colors must be the same." << std::endl;
+                return -1;
+            }
+        }
+
+        struct activeAnimation {
+            const animateKitties* animation;
+            size_t frameIndex;
+            int repeatsLeft;
+            std::chrono::steady_clock::time_point nextFrameTime;
+        };
+
+        //hide cursor
+        std::cout << "\033[?25l"; // Hide cursor
+
+        std::vector<activeAnimation> activeAnimations;
+        activeAnimations.reserve(animations.size());
+
+        const auto startTime = std::chrono::steady_clock::now();
+        for(const auto& animation : animations) {
+            activeAnimations.push_back({&animation, 0, animation.repeatCount, startTime});
+        }
+
+        while(!activeAnimations.empty()) {
+            const auto now = std::chrono::steady_clock::now();
+            bool renderedFrame = false;
+
+            for(size_t i = 0; i < activeAnimations.size();) {
+                auto& active = activeAnimations[i];
+
+                if(active.repeatsLeft <= 0) {
+                    activeAnimations.erase(activeAnimations.begin() + static_cast<std::vector<activeAnimation>::difference_type>(i));
+                    continue;
+                }
+
+                if(now < active.nextFrameTime) {
+                    ++i;
+                    continue;
+                }
+
+                if(active.frameIndex >= active.animation->kittyNames.size()) {
+                    active.frameIndex = 0;
+                    --active.repeatsLeft;
+                    if(active.repeatsLeft <= 0) {
+                        activeAnimations.erase(activeAnimations.begin() + static_cast<std::vector<activeAnimation>::difference_type>(i));
+                        continue;
+                    }
+                }
+
+                renderKittyFrame(*active.animation, active.frameIndex);
+                active.frameIndex++;
+                active.nextFrameTime = now + std::chrono::milliseconds(active.animation->delay);
+                renderedFrame = true;
+                ++i;
+            }
+
+            if(activeAnimations.empty()) {
+                break;
+            }
+
+            if(!renderedFrame) {
+                auto nextWakeTime = activeAnimations.front().nextFrameTime;
+                for(const auto& active : activeAnimations) {
+                    if(active.nextFrameTime < nextWakeTime) {
+                        nextWakeTime = active.nextFrameTime;
+                    }
+                }
+
+                if(nextWakeTime > now) {
+                    std::this_thread::sleep_until(nextWakeTime);
+                }
+            }
+        }
+        //show cursor
+        std::cout << "\033[?25h"; // Show cursor
+
+        return 0;
+    }
+
+    int animateBetweenKittiesBulk(std::vector<animateKitties> animations) {
+        return animateKittiesBulk(animations);
     }
 };
 
@@ -260,7 +373,13 @@ int main(){
     Kittacaii kitty;
 
     kitty.setKittyColor("#e1ff00"); // Set a custom color for the kitty
-    kitty.animateBetwenKitties(5, {"earTurnLeft", "earTurnRight"}, {"#e1ff00", "#e1ff00"}, 500, 10);
+    kitty.animateBetweenKittiesBulk({
+        {5, 10, {"staticKitty", "staticKittyHappy", "staticKittySad"}, {"#e1ff00", "#e1ff00", "#e1ff00"}, 400, 3},
+        {9, 100, {"staticKitty", "staticKittyHappy", "staticKittySad"}, {"#e1ff00", "#e1ff00", "#e1ff00"}, 400, 3},
+        {11, 10, {"staticKitty", "staticKittyHappy", "staticKittySad"}, {"#e1ff00", "#e1ff00", "#e1ff00"}, 400, 3},
+        {7, 38, {"staticKitty", "staticKittyHappy", "staticKittySad"}, {"#e1ff00", "#e1ff00", "#e1ff00"}, 400, 3},
+        {15, 187, {"staticKitty", "staticKittyHappy", "staticKittySad"}, {"#e1ff00", "#e1ff00", "#e1ff00"}, 400, 3},
+    });
 
     return 0;
 }
