@@ -6,6 +6,7 @@ A lightweight, header-only C++ library for rendering and animating ASCII art cat
 ## Overview
 
 Kittacaii is a fun, dependency-free C++ library that brings animated ASCII cats to your terminal applications. It provides a simple interface for displaying cats with various expressions, colors, and animation capabilities using ANSI escape sequences.
+![Kittacaii Logo](demoGifs/4.gif)
 
 ## Features
 
