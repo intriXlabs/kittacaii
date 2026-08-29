@@ -1,0 +1,3 @@
+---
+this md is consideration to keep the framework as updated as possible, and to provide a clear and concise documentation for the API. It is important to ensure that all endpoints are well-documented, including request parameters, response formats, and any relevant examples. Additionally, any changes or updates to the API should be reflected in this documentation to maintain accuracy and usability for developers.
+---

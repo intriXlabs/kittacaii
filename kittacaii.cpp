@@ -70,7 +70,7 @@ private:
 
     std::string staticKittyLoveLevelThree[3] ={
         "  /\\_/\\  ",
-        " ( 💖.💖 ) ",
+        " ( 🩷.🩷 ) ",
         "  >   <  "
     };
 
