@@ -98,9 +98,68 @@ private:
         "  >   <  "
     };
 
+    std::string staticKittyMoney[3] ={
+        "  /\\_/\\  ",
+        " ( $.$ ) ",
+        "  >   <  "
+    };
+
+    std::string staticKittyAwkward[3] ={
+        "  /\\_/\\  ",
+        " ( ס.ס ) ",
+        "  >   <  "
+    };
+
+    std::string staticKittyTraumatized[3] ={
+        "  /\\_/\\  ",
+        " ( ة.ة ) ",
+        "  >   <  "
+    };
+
+    std::string staticKittyStarred[3] ={
+        "  /\\_/\\  ",
+        " ( ٭.٭ ) ",
+        "  >   <  "
+    };
+
+    std::string staticKittyCrying[3] ={
+        "  /\\_/\\  ",
+        " ( ܊.܊ ) ",
+        "  >   <  "
+    };
+
+    std::string staticKittyYenYan[3] ={
+        "  /\\_/\\  ",
+        " ( ࿊.࿊ ) ",
+        "  >   <  "
+    };
+
+    std::string staticKittyTraumatized2[3] ={
+        "  /\\_/\\  ",
+        " ( ⊙.⊙ ) ",
+        "  >   <  "
+    };
+
+    std::string staticKittyPossesed[3] ={
+        "  /\\_/\\  ",
+        " ( ◉.◉ ) ",
+        "  >   <  "
+    };
+
+    std::string staticKittyFlashBanged[3] ={
+        "  /\\_/\\  ",
+        " ( ⬤.⬤ ) ",
+        "  >   <  "
+    };
+
+    std::string staticKittyNya[3] ={
+        "  /\\_/\\  ",
+        " ( ~.~ ) ",
+        "  >   <  "
+    };
     
 public:
-    std::string kittyList[15] = {
+    std::string kittyList[25] = {
         "staticKitty",
         "staticKittyAngry",
         "staticKittyHappy",
@@ -115,7 +174,17 @@ public:
         "staticKittyquestion",
         "staticKittyShocked",
         "staticKittyEarTurnLeft",
-        "staticKittyEarTurnRight"
+        "staticKittyEarTurnRight",
+        "staticKittyMoney",
+        "staticKittyAwkward",
+        "staticKittyTraumatized",
+        "staticKittyStarred",
+        "staticKittyCrying",
+        "staticKittyYenYan",
+        "staticKittyTraumatized2",
+        "staticKittyPossesed",
+        "staticKittyFlashBanged",
+        "staticKittyNya"
     };
 
 private:
@@ -216,8 +285,48 @@ public:
             for(int i = 0; i < 3; i++){
                 temporaryKitty[i] = staticKittyEarTurnRight[i];
             }
+        } else if(kittyName == "staticKittyMoney" || kittyName == "money"){
+            for(int i = 0; i < 3; i++){
+                temporaryKitty[i] = staticKittyMoney[i];
+            }
+        } else if(kittyName == "staticKittyAwkward" || kittyName == "awkward"){
+            for(int i = 0; i < 3; i++){
+                temporaryKitty[i] = staticKittyAwkward[i];
+            }
+        } else if(kittyName == "staticKittyTraumatized" || kittyName == "traumatized"){
+            for(int i = 0; i < 3; i++){
+                temporaryKitty[i] = staticKittyTraumatized[i];
+            }
+        } else if(kittyName == "staticKittyStarred" || kittyName == "starred"){
+            for(int i = 0; i < 3; i++){
+                temporaryKitty[i] = staticKittyStarred[i];
+            }
+        } else if(kittyName == "staticKittyCrying" || kittyName == "crying"){
+            for(int i = 0; i < 3; i++){
+                temporaryKitty[i] = staticKittyCrying[i];
+            }
+        } else if(kittyName == "staticKittyYenYan" || kittyName == "yenyan"){
+            for(int i = 0; i < 3; i++){
+                temporaryKitty[i] = staticKittyYenYan[i];
+            }
+        } else if(kittyName == "staticKittyTraumatized2" || kittyName == "traumatized2"){
+            for(int i = 0; i < 3; i++){
+                temporaryKitty[i] = staticKittyTraumatized2[i];
+            }
+        } else if(kittyName == "staticKittyPossesed" || kittyName == "possesed"){
+            for(int i = 0; i < 3; i++){
+                temporaryKitty[i] = staticKittyPossesed[i];
+            }
+        } else if(kittyName == "staticKittyFlashBanged" || kittyName == "flashbanged"){
+            for(int i = 0; i < 3; i++){
+                temporaryKitty[i] = staticKittyFlashBanged[i];
+            }
+        } else if(kittyName == "staticKittyNya" || kittyName == "nya"){
+            for(int i = 0; i < 3; i++){
+                temporaryKitty[i] = staticKittyNya[i];
+            }
         }
-         else {
+        else {
             std::cout << "Kitty type not found. Displaying default static kitty." << std::endl;
             for(int i = 0; i < 3; i++){
                 temporaryKitty[i] = staticKitty[i];
@@ -363,3 +472,11 @@ public:
         return 0;
     }
 };
+
+int main() {
+    Kittacaii kittacaii;
+
+    // Example usage of animateBetweenKitties
+    kittacaii.printKitty(5, 10, "nya");
+    return 0;
+}
