@@ -472,11 +472,3 @@ public:
         return 0;
     }
 };
-
-int main() {
-    Kittacaii kittacaii;
-
-    // Example usage of animateBetweenKitties
-    kittacaii.printKitty(5, 10, "nya");
-    return 0;
-}

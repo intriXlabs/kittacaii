@@ -18,7 +18,18 @@ int main() {
         {10, 30, {"staticKitty", "staticKittyLoveLevelThree"}, {"#afc3ff", "#afc3ff"}, 500, 300},
         {10, 50, {"staticKitty", "staticKittyEarTurnLeft"}, {"#c6a1ff", "#c6a1ff"}, 500, 300},
         {10, 70, {"staticKitty", "staticKittyEarTurnRight"}, {"#ff96ee", "#ff96ee"}, 500, 300},
-        {10, 90, {"staticKitty", "staticKittyHappy"}, {"#ff9bc3", "#ff9bc3"}, 500, 300},
+        {10, 90, {"staticKitty", "money"}, {"#ff9bc3", "#ff9bc3"}, 500, 300},
+        {10, 110, {"staticKitty", "awkward"}, {"#ff9bc3", "#ff9bc3"}, 500, 300},
+        {10, 130, {"staticKitty", "traumatized"}, {"#ff9bc3", "#ff9bc3"}, 500, 300},
+        {10, 150, {"staticKitty", "starred"}, {"#ff9bc3", "#ff9bc3"}, 500, 300},
+        {15, 10, {"staticKitty", "crying"}, {"#ff9bc3", "#ff9bc3"}, 500, 300},
+        {15, 30, {"staticKitty", "yenyan"}, {"#ff9bc3", "#ff9bc3"}, 500, 300},
+        {15, 50, {"staticKitty", "traumatized2"}, {"#ff9bc3", "#ff9bc3"}, 500, 300},
+        {15, 70, {"staticKitty", "possesed"}, {"#ff9bc3", "#ff9bc3"}, 500, 300},
+        {15, 90, {"staticKitty", "flashbanged"}, {"#ff9bc3", "#ff9bc3"}, 500, 300},
+        {15, 110, {"staticKitty", "nya"}, {"#ff9bc3", "#ff9bc3"}, 500, 300}
+        
+        
     });
     std::this_thread::sleep_for(std::chrono::milliseconds(1000000));
     
