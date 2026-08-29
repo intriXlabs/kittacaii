@@ -10,7 +10,7 @@ Kittacaii is a fun, dependency-free C++ library that brings animated ASCII cats 
 
 ## Features
 
-- 🐱 **15 Pre-built Cat Expressions** - From happy to confused to loving
+- 🐱 **25 Pre-built Cat Expressions** - From happy to confused to loving
 - 🎨 **Custom Color Support** - Color your kitties using hex color codes
 - 🎬 **Sequential Animations** - Animate between different cat expressions
 - 🔄 **Bulk Animation Support** - Run multiple animations concurrently
