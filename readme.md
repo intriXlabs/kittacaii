@@ -1,4 +1,4 @@
-# Kittacaii v.1.1
+# Kittacaii v.1.2
 
 A lightweight, header-only C++ library for rendering and animating ASCII art cats in the terminal.
 ![Kittacaii Logo](demoGifs/5.gif)
@@ -23,6 +23,36 @@ Kittacaii is a fun, dependency-free C++ library that brings animated ASCII cats 
 - C++11 or later
 - Terminal with ANSI escape sequence support (most modern terminals)
 - No external dependencies
+
+# repo structure
+
+```
+kittacaii/
+│
+├── demoCodes            [demo code for various cat expressions and animations]
+│   ├── catStory.cpp
+│   ├── DanceFloor.cpp
+│   └── demo.cpp         
+│
+├── demoGifs             [readme related demo gif] (free to use anywhere btw - no license required)
+│   ├── 1.gif
+│   ├── 2.gif
+│   ├── 3.gif
+│   ├── 4.gif
+│   └── 5.gif
+│
+├── API.md               [api information and usage guide]
+│
+├── expressions.md       [list of all kitty expressions with examples]
+│
+├── kittacaii.cpp        {{main library file containing the Kittacaii class and all functionality}}
+│
+├── latestUpdates.md     [log of recent updates and changes to the library]
+│
+├── LICENSE              [MIT License file]
+│
+└── readme.md            [this readme file providing an overview, installation instructions, and usage examples]
+```
 
 ## Installation
 
