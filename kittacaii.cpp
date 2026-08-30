@@ -5,6 +5,38 @@
 #include <cstdint>
 #include <chrono>
 
+
+/*
+
+main kitty architecture: each public and private section is divided to keep as organized as possible. each section has a specific purpose and is clearly labeled for easy navigation and understanding of the code structure.
+meanwhile many code sections can be at different places but the're organised in such manner to provide need-use functionality type architecture organizations which means if we found need then we make it's code at time - not early or at end.
+
+- private: kitty expressions (staticKitty, staticKittyAngry, etc.)
+- public: static kitty ecpression list (kittyList)
+- private: color struct for RGB values
+- private: isKittyColorful flag and kittyColor variable
+- public: setKittyColor and resetKittyColor methods
+- public: printKitty method to display kitty at specified position with optional color
+- public: animateKitties struct for animation data
+- public: renderKittyFrame method to render a single frame of animation
+- public: animateBetweenKitties method to animate between multiple kitties
+
+*/
+
+/*
+
+To add new kitty expressions, follow these steps:
+
+1. Define a new private string array for the kitty expression, similar to the existing ones (e.g., staticKittyNewExpression).
+2. Add the new kitty expression to the kittyList array in the public section, ensuring it has a unique name.
+3. Update the printKitty method to include a condition for the new kitty expression, allowing it to be displayed when specified.
+
+NOTE: animatuon methods does use printKitty method to render kitty expressiions so once kitty is defined inside above three places then animation directly can use it without any further changes.
+NOTE: string is used due to same reason - fast and easy way to update
+NOTE: architecture is designed to handle 1000s of kitty expressions without any serious performance issues, as the expressions are stored in memory and accessed directly when needed. This allows for quick rendering and animation of kitties without the need for complex data structures or algorithms.
+
+*/
+
 class Kittacaii{
 
 private:
@@ -223,6 +255,11 @@ public:
 public:
 
     void printKitty(int row, int col, std::string kittyName = "staticKitty") {
+
+        if(row < 0 || col < 0) {
+            std::cerr << "Error: Row and column must be non-negative." << std::endl;
+            return;
+        }
 
         std::string temporaryKitty[3];
         if(kittyName == "staticKitty" || kittyName == "normal"){
