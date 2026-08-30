@@ -58,7 +58,7 @@ int main() {
 
 | Feature | Kittacaii | figlet | cowsay | lolcat |
 |---------|-----------|--------|--------|--------|
-| **Cat-specific art** | ✅ 15 expressions | ❌ | ❌ | ❌ |
+| **Cat-specific art** | ✅ 25 expressions | ❌ | ❌ | ❌ |
 | **Animation support** | ✅ | ❌ | ❌ | ❌ |
 | **Custom colors** | ✅ Hex support | ❌ | ❌ | ✅ |
 | **Concurrent animations** | ✅ | ❌ | ❌ | ❌ |
@@ -71,7 +71,7 @@ int main() {
 - **Purpose-built for cats** - Unlike general ASCII art libraries
 - **Native C++ support** - No external process spawning needed
 - **Animation framework** - Built-in support for dynamic content
-- **Emotional expression system** - 15 different cat moods
+- **Emotional expression system** - 25 different cat moods
 - **Concurrent rendering** - Multiple cats can animate simultaneously
 - **Color integration** - Seamless ANSI color support
 
