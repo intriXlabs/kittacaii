@@ -1,6 +1,11 @@
 ---
 this md is consideration to keep the framework as updated as possible, and to provide a clear and concise documentation for the API. It is important to ensure that all endpoints are well-documented, including request parameters, response formats, and any relevant examples. Additionally, any changes or updates to the API should be reflected in this documentation to maintain accuracy and usability for developers.
 ---
+# date: 31 aug 2026
+# update: fourth
+# current version: 1.3
+
+- added rgb(red, green, blue) color support for kitty expressions in terminal. inside setColor() method
 
 # date: 30 aug 2026
 # update: third
