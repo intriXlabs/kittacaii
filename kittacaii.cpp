@@ -231,20 +231,31 @@ private:
     color kittyColor = {255, 255, 255}; // Default color is white
 
 public:
-    void setKittyColor(std::string hexColor) {
+    void setKittyColor(std::string colorCode) {
         // Implementation for converting hex color to RGB
-        if(hexColor.length() != 7 || hexColor[0] != '#') {
-            std::cerr << "Invalid hex color format. Use #RRGGBB." << std::endl;
-            return;
+        if(colorCode.length() == 7 && colorCode[0] == '#') {
+            //hexcode format #RRGGBB
+            kittyColor.r = static_cast<uint8_t>(std::stoi(colorCode.substr(1, 2), nullptr, 16));
+            kittyColor.g = static_cast<uint8_t>(std::stoi(colorCode.substr(3, 2), nullptr, 16));
+            kittyColor.b = static_cast<uint8_t>(std::stoi(colorCode.substr(5, 2), nullptr, 16));
+            isKittyColorful = true;
         }
-        uint32_t hexValue = std::stoul(hexColor.substr(1), nullptr, 16);
-        uint8_t r = (hexValue >> 16) & 0xFF;
-        uint8_t g = (hexValue >> 8) & 0xFF;
-        uint8_t b = hexValue & 0xFF;
-        kittyColor.r = r;
-        kittyColor.g = g;
-        kittyColor.b = b;
-        isKittyColorful = true;
+        else if(colorCode[0] == 'r' && colorCode[1] == 'g' && colorCode[2] == 'b' && colorCode[3] == '(' && colorCode.back() == ')') {
+            // Parse rgb(r, g, b) format
+            size_t firstComma = colorCode.find(',');
+            size_t secondComma = colorCode.find(',', firstComma + 1);
+            if(firstComma != std::string::npos && secondComma != std::string::npos) {
+                kittyColor.r = static_cast<uint8_t>(std::stoi(colorCode.substr(4, firstComma - 4)));
+                kittyColor.g = static_cast<uint8_t>(std::stoi(colorCode.substr(firstComma + 1, secondComma - firstComma - 1)));
+                kittyColor.b = static_cast<uint8_t>(std::stoi(colorCode.substr(secondComma + 1, colorCode.length() - secondComma - 2)));
+                isKittyColorful = true;
+            } else {
+                std::cerr << "Error: Invalid RGB format." << std::endl;
+            }
+        } else {
+            std::cerr << "Error: Invalid color code format." << std::endl;
+        }
+
     }
 
     void resetKittyColor() {
@@ -509,3 +520,17 @@ public:
         return 0;
     }
 };
+
+
+int main() {
+    Kittacaii kittyAnimator;
+
+    kittyAnimator.setKittyColor("#FF69B4"); // Set kitty color to pink
+    kittyAnimator.printKitty(5, 10, "staticKittyHappy"); //
+    kittyAnimator.resetKittyColor(); // Reset color to default
+    kittyAnimator.setKittyColor("rgb(0, 255, 0)"); // Set kitty color to green
+    kittyAnimator.printKitty(10, 10, "staticKittyAngry");
+    kittyAnimator.resetKittyColor(); // Reset color to default
+
+    return 0;
+}
