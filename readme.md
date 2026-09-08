@@ -1,7 +1,7 @@
 # Kittacaii v.1.2
 
 A lightweight, header-only C++ library for rendering and animating ASCII art cats in the terminal.
-![Kittacaii Logo](demoGifs/5.gif)
+![Kittacaii Logo](demoGifs/8_september_update.gif)
 
 ## Overview
 
@@ -10,7 +10,7 @@ Kittacaii is a fun, dependency-free C++ library that brings animated ASCII cats 
 
 ## Features
 
-- 🐱 **25 Pre-built Cat Expressions** - From happy to confused to loving
+- 🐱 **36 Pre-built Cat Expressions** - From happy to confused to loving
 - 🎨 **Custom Color Support** - Color your kitties using hex color codes
 - 🎬 **Sequential Animations** - Animate between different cat expressions
 - 🔄 **Bulk Animation Support** - Run multiple animations concurrently
@@ -88,7 +88,7 @@ int main() {
 
 | Feature | Kittacaii | figlet | cowsay | lolcat |
 |---------|-----------|--------|--------|--------|
-| **Cat-specific art** | ✅ 25 expressions | ❌ | ❌ | ❌ |
+| **Cat-specific art** | ✅ 36 expressions | ❌ | ❌ | ❌ |
 | **Animation support** | ✅ | ❌ | ❌ | ❌ |
 | **Custom colors** | ✅ Hex support | ❌ | ❌ | ✅ |
 | **Concurrent animations** | ✅ | ❌ | ❌ | ❌ |
@@ -101,14 +101,14 @@ int main() {
 - **Purpose-built for cats** - Unlike general ASCII art libraries
 - **Native C++ support** - No external process spawning needed
 - **Animation framework** - Built-in support for dynamic content
-- **Emotional expression system** - 25 different cat moods
+- **Emotional expression system** - 36 different cat moods
 - **Concurrent rendering** - Multiple cats can animate simultaneously
 - **Color integration** - Seamless ANSI color support
 
 ## Troubleshooting
 
 ### Common Issues
-
+    
 **Q: Cats appear garbled or misplaced**
 - Ensure your terminal supports ANSI escape sequences
 - Check that you're using 1-based coordinates (not 0-based)

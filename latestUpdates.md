@@ -7,6 +7,24 @@ this md is consideration to keep the framework as updated as possible, and to pr
 
 - added rgb(red, green, blue) color support for kitty expressions in terminal. inside setColor() method
 
+
+
+# date: 8 sep 2026
+# update: third
+# current version: 1.3
+
+- addedd cat worried expression
+- addedd cat scared expression
+- added cat bored expression
+- added cat dead expression
+- added cat dizzy expression
+- added cat suspicious expression
+- added cat relieved expression
+- added cat smug expression
+- added cat wink right expression
+- added cat wink left expression
+- added cat blank expression
+
 # date: 30 aug 2026
 # update: third
 # current version: 1.2

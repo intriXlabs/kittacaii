@@ -31,7 +31,7 @@ To add new kitty expressions, follow these steps:
 2. Add the new kitty expression to the kittyList array in the public section, ensuring it has a unique name.
 3. Update the printKitty method to include a condition for the new kitty expression, allowing it to be displayed when specified.
 
-NOTE: animatuon methods does use printKitty method to render kitty expressiions so once kitty is defined inside above three places then animation directly can use it without any further changes.
+NOTE: animation methods does use printKitty method to render kitty expressiions so once kitty is defined inside above three places then animation directly can use it without any further changes.
 NOTE: string is used due to same reason - fast and easy way to update
 NOTE: architecture is designed to handle 1000s of kitty expressions without any serious performance issues, as the expressions are stored in memory and accessed directly when needed. This allows for quick rendering and animation of kitties without the need for complex data structures or algorithms.
 
@@ -189,9 +189,75 @@ private:
         " ( ~.~ ) ",
         "  >   <  "
     };
+
+    std::string staticKittyWorried[3] ={
+        "  /\\_/\\  ",
+        " ( ;.; ) ",
+        "  >   <  "
+    };
+
+    std::string staticKittyScared[3] ={
+        "  /\\_/\\  ",
+        " ( Q.Q ) ",
+        "  >   <  "
+    };
+
+    std::string staticKittyBored[3] ={
+        "  /\\_/\\  ",
+        " ( -.- ) ",
+        "  >   <  "
+    };
+
+    std::string staticKittyDead[3] ={
+        "  /\\_/\\  ",
+        " ( x.x ) ",
+        "  >   <  "
+    };
+
+    std::string staticKittyDizzy[3] ={
+        "  /\\_/\\  ",
+        " ( @.@ ) ",
+        "  >   <  "
+    };
+
+    std::string staticKittySuspecious[3] ={
+        "  /\\_/\\  ",
+        " ( ಠ_ಠ ) ",
+        "  >   <  "
+    };
+
+    std::string staticKittyRelieved[3] ={
+        "  /\\_/\\  ",
+        " ( -‿- ) ",
+        "  >   <  "
+    };
     
+    std::string staticKittySmug[3] ={
+        "  /\\_/\\  ",
+        " ( ¬‿¬ ) ",
+        "  >   <  "
+    };
+
+    std::string staticKittyWinkRight[3] ={
+        "  /\\_/\\  ",
+        " ( ^.~ ) ",
+        "  >   <  "
+    };
+
+    std::string staticKittyWinkLeft[3] ={
+        "  /\\_/\\  ",
+        " ( ~.^ ) ",
+        "  >   <  "
+    };
+
+    std::string staticKittyBlank[3] ={
+        "  /\\_/\\  ",
+        " ( ._. ) ",
+        "  >   <  "
+    };
+
 public:
-    std::string kittyList[25] = {
+    std::string kittyList[36] = {
         "staticKitty",
         "staticKittyAngry",
         "staticKittyHappy",
@@ -216,7 +282,18 @@ public:
         "staticKittyTraumatized2",
         "staticKittyPossesed",
         "staticKittyFlashBanged",
-        "staticKittyNya"
+        "staticKittyNya",
+        "staticKittyWorried",
+        "staticKittyScared",
+        "staticKittyBored",
+        "staticKittyDead",
+        "staticKittyDizzy",
+        "staticKittySuspecious",
+        "staticKittyRelieved",
+        "staticKittySmug",
+        "staticKittyWinkRight",
+        "staticKittyWinkLeft",
+        "staticKittyBlank"
     };
 
 private:
@@ -373,6 +450,50 @@ public:
             for(int i = 0; i < 3; i++){
                 temporaryKitty[i] = staticKittyNya[i];
             }
+        } else if (kittyName == "staticKittyWorried" || kittyName == "worried"){
+            for(int i = 0; i < 3; i++){
+                temporaryKitty[i] = staticKittyWorried[i];
+            }
+        } else if (kittyName == "staticKittyScared" || kittyName == "scared"){
+            for(int i = 0; i < 3; i++){
+                temporaryKitty[i] = staticKittyScared[i];
+            }
+        } else if (kittyName == "staticKittyBored" || kittyName == "bored"){
+            for(int i = 0; i < 3; i++){
+                temporaryKitty[i] = staticKittyBored[i];
+            }
+        } else if (kittyName == "staticKittyDead" || kittyName == "dead"){
+            for(int i = 0; i < 3; i++){
+                temporaryKitty[i] = staticKittyDead[i];
+            }
+        } else if (kittyName == "staticKittyDizzy" || kittyName == "dizzy"){
+            for(int i = 0; i < 3; i++){
+                temporaryKitty[i] = staticKittyDizzy[i];
+            }
+        } else if (kittyName == "staticKittySuspecious" || kittyName == "suspecious"){
+            for(int i = 0; i < 3; i++){
+                temporaryKitty[i] = staticKittySuspecious[i];
+            }
+        } else if (kittyName == "staticKittyRelieved" || kittyName == "relieved"){
+            for(int i = 0; i < 3; i++){
+                temporaryKitty[i] = staticKittyRelieved[i];
+            }
+        } else if (kittyName == "staticKittySmug" || kittyName == "smug"){
+            for(int i = 0; i < 3; i++){
+                temporaryKitty[i] = staticKittySmug[i];
+            }
+        } else if (kittyName == "staticKittyWinkRight" || kittyName == "winkRight"){
+            for(int i = 0; i < 3; i++){
+                temporaryKitty[i] = staticKittyWinkRight[i];
+            }
+        } else if (kittyName == "staticKittyWinkLeft" || kittyName == "winkLeft"){
+            for(int i = 0; i < 3; i++){
+                temporaryKitty[i] = staticKittyWinkLeft[i];
+            }
+        } else if (kittyName == "staticKittyBlank" || kittyName == "blank"){
+            for(int i = 0; i < 3; i++){
+                temporaryKitty[i] = staticKittyBlank[i];
+            }
         }
         else {
             std::cout << "Kitty type not found. Displaying default static kitty." << std::endl;
@@ -520,17 +641,3 @@ public:
         return 0;
     }
 };
-
-
-int main() {
-    Kittacaii kittyAnimator;
-
-    kittyAnimator.setKittyColor("#FF69B4"); // Set kitty color to pink
-    kittyAnimator.printKitty(5, 10, "staticKittyHappy"); //
-    kittyAnimator.resetKittyColor(); // Reset color to default
-    kittyAnimator.setKittyColor("rgb(0, 255, 0)"); // Set kitty color to green
-    kittyAnimator.printKitty(10, 10, "staticKittyAngry");
-    kittyAnimator.resetKittyColor(); // Reset color to default
-
-    return 0;
-}
