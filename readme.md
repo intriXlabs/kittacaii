@@ -1,4 +1,4 @@
-# Kittacaii v.1.2
+# Kittacaii v.1.3
 
 A lightweight, header-only C++ library for rendering and animating ASCII art cats in the terminal.
 ![Kittacaii Logo](demoGifs/8_september_update.gif)
